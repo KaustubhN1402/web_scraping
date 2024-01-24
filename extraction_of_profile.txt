@@ -1,0 +1,7 @@
+Author Name: Kalyani C Waghmare
+Affiliation: Assistant Professor, at PICT Pune
+Email: @pict.edu
+Citations: 215
+h-index: 5
+i10-index: 3
+Cites per year: {2013: 6, 2014: 6, 2015: 21, 2016: 21, 2017: 28, 2018: 17, 2019: 27, 2020: 30, 2021: 18, 2022: 24, 2023: 13}
