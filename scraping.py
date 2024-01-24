@@ -1,6 +1,7 @@
 from scholarly import scholarly
 from author import Author
 from database import insert_author
+import json
 
 r = scholarly.search_author( "Kalyani C Waghmare" )
 r = next( r )
@@ -43,10 +44,44 @@ with open("extraction_of_profile.txt", "w", encoding="utf-8") as file:
     insert_author( author_obj )
     
     
-with open("extraction_of_publication" , "w" , encoding="utf-8") as file : 
+with open("extraction_of_publication.txt" , "w" , encoding="utf-8") as file : 
     file.write(f"Publication_1 : {author['publications']}\n ")
     
 #with open("extraction_of_publication_1.txt" , "w" , encoding="utf-8") as file : 
 #  file.write(f"Publication_2.txt :{author[]}  ")
     
     
+filename = 'extraction_of_publication.txt'
+ 
+# dictionary where the lines from
+# text will be stored
+dict1 = {}
+ 
+# creating dictionary
+with open(filename) as fh:
+ 
+    for line in fh:
+        
+        if line.strip():
+            
+            parts = line.strip().split(None,1)
+            
+            if len(parts)==2 : 
+                
+                command , description = parts
+ 
+        # reads each line and trims of extra the spaces 
+        # and gives only the valid words
+        
+ 
+                dict1[command] = description.strip()
+            else:
+                print("unable to split lines")
+                
+                
+ 
+# creating json file
+# the JSON file is named as test1
+out_file = open("test1.json", "w")
+json.dump(dict1, out_file, indent = 4, sort_keys = False)
+out_file.close()
