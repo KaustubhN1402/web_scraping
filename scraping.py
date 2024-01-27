@@ -6,6 +6,11 @@ import json
 r = scholarly.search_author( "Kalyani C Waghmare" )
 r = next( r )
 author = scholarly.fill( r )
+
+with open( "sample.json" , "w" ) as file:
+    json.dump( author , file )
+   
+'''
 #scholarly.pprint( author )
 
 # Print the titles of the author's publications
@@ -85,3 +90,4 @@ with open(filename) as fh:
 out_file = open("test1.json", "w")
 json.dump(dict1, out_file, indent = 4, sort_keys = False)
 out_file.close()
+'''
