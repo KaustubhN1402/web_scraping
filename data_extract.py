@@ -5,7 +5,7 @@ with open('sample.json', 'r') as json_file:
 mysql_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'MySQL@2023',
+    'password': 'root',
     'database': 'article',
 }
 

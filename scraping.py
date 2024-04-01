@@ -2,13 +2,16 @@ from scholarly import scholarly
 from author import Author
 from database import insert_author
 import json
-
-r = scholarly.search_author( "Kalyani C Waghmare" )
+import os
+author_name = input("enter name of the author to be searched ")
+r = scholarly.search_author( author_name)
 r = next( r )
 author = scholarly.fill( r )
 
 with open( "sample.json" , "w" ) as file:
     json.dump( author , file )
+    
+os.system( "python data_extract.py" )
    
 '''
 #scholarly.pprint( author )
@@ -20,6 +23,7 @@ publication_titles = [pub['bib']['title'] for pub in author['publications']]
 first_publication = author['publications'][0]
 first_publication_filled = scholarly.fill(first_publication)
 scholarly.pprint(first_publication_filled)
+
 
 
 
