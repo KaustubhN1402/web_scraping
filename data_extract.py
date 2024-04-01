@@ -14,21 +14,21 @@ cursor = connection.cursor()
 
 create_table_query1 = """
 CREATE TABLE IF NOT EXISTS publication (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    author_id VARCHAR(255),
     title VARCHAR(255),
     pub_year INT,
     citation VARCHAR(255),
     author VARCHAR(255),
-    publication_id VARCHAR(255),
-    num_citations INT,
-    citation_url VARCHAR(255)
+    publication_id VARCHAR(255) PRIMARY KEY,
+    num_citations INT,  
+    citation_url VARCHAR(255),
+    FOREIGN KEY(author_id) references author(gscholar_id)
 )
 """
 
 create_table_query2 = """
 CREATE TABLE IF NOT EXISTS author (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    gscholar_id VARCHAR(255),
+    gscholar_id VARCHAR(255) PRIMARY KEY,
     name VARCHAR(255),
     affiliation VARCHAR(255),
     email VARCHAR(255),
@@ -49,6 +49,14 @@ for i in data["publications"]:
     INSERT INTO publication 
     (title, pub_year, citation, author, publication_id, num_citations,citation_url) 
     VALUES (%s, %s, %s, %s, %s, %s,%s)
+    ON DUPLICATE KEY UPDATE
+    title=VALUES(title), 
+    pub_year=VALUES(pub_year), 
+    citation=VALUES(citation), 
+    author=VALUES(author), 
+    publication_id=VALUES(publication_id), 
+    num_citations=VALUES(num_citations), 
+    citation_url=VALUES(citation_url)
     """
     values = (
             i['bib']['title'],
@@ -67,6 +75,15 @@ insert_query2 = """
 INSERT INTO author 
 (gscholar_id, name, affiliation, email, interests, department, citedby,h_index,i10_index) 
 VALUES (%s, %s, %s, %s, %s, %s,%s,%s,%s)
+ON DUPLICATE KEY UPDATE 
+name=VALUES(name), 
+affiliation=VALUES(affiliation), 
+email=VALUES(email), 
+interests=VALUES(interests), 
+department=VALUES(department), 
+citedby=VALUES(citedby), 
+h_index=VALUES(h_index), 
+i10_index=VALUES(i10_index)
 """
 values = (
         data.get('scholar_id', 'NULL'),
