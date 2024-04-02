@@ -1,5 +1,7 @@
 import mysql.connector
 import json
+from datetime import datetime
+
 with open('sample.json', 'r') as json_file:
     data = json.load(json_file)
 mysql_config = {
@@ -36,7 +38,8 @@ CREATE TABLE IF NOT EXISTS author (
     department VARCHAR(25),
     citedby INT,
     h_index INT,
-    i10_index INT
+    i10_index INT,
+    last_searched DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )
 """
 cursor.execute(create_table_query1)
@@ -83,7 +86,9 @@ interests=VALUES(interests),
 department=VALUES(department), 
 citedby=VALUES(citedby), 
 h_index=VALUES(h_index), 
-i10_index=VALUES(i10_index)
+i10_index=VALUES(i10_index) , 
+last_searched = NOW()
+
 """
 values = (
         data.get('scholar_id', 'NULL'),
