@@ -42,37 +42,12 @@ CREATE TABLE IF NOT EXISTS author (
     last_searched DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )
 """
-cursor.execute(create_table_query1)
-connection.commit()
 cursor.execute(create_table_query2)
 connection.commit()
+cursor.execute(create_table_query1)
+connection.commit()
 
-for i in data["publications"]:
-    insert_query1 = """
-    INSERT INTO publication 
-    (title, pub_year, citation, author, publication_id, num_citations,citation_url) 
-    VALUES (%s, %s, %s, %s, %s, %s,%s)
-    ON DUPLICATE KEY UPDATE
-    title=VALUES(title), 
-    pub_year=VALUES(pub_year), 
-    citation=VALUES(citation), 
-    author=VALUES(author), 
-    publication_id=VALUES(publication_id), 
-    num_citations=VALUES(num_citations), 
-    citation_url=VALUES(citation_url)
-    """
-    values = (
-            i['bib']['title'],
-            int(i['bib'].get('pub_year', 0)),
-            i['bib']['citation'],
-            data['name'],
-            i['author_pub_id'],
-            int(i['num_citations']),
-            i.get('citedby_url', "NULL")
-        )
-    cursor.execute(insert_query1, values)
-    connection.commit()
-
+    
 json_data = json.dumps(data['interests'])
 insert_query2 = """
 INSERT INTO author 
@@ -103,6 +78,36 @@ values = (
     )
 cursor.execute(insert_query2, values)
 connection.commit()
+
+
+for i in data["publications"]:
+    insert_query1 = """
+    INSERT INTO publication 
+    (author_id , title, pub_year, citation, author, publication_id, num_citations,citation_url) 
+    VALUES (%s, %s, %s, %s, %s, %s,%s,%s)
+    ON DUPLICATE KEY UPDATE
+    author_id = VALUES(author_id),
+    title=VALUES(title), 
+    pub_year=VALUES(pub_year), 
+    citation=VALUES(citation), 
+    author=VALUES(author), 
+    publication_id=VALUES(publication_id), 
+    num_citations=VALUES(num_citations), 
+    citation_url=VALUES(citation_url)
+    """
+    values = (
+            data.get('scholar_id', 'NULL'),
+            i['bib']['title'],
+            int(i['bib'].get('pub_year', 0)),
+            i['bib']['citation'],
+            data['name'],
+            i['author_pub_id'],
+            int(i['num_citations']),
+            i.get('citedby_url', "NULL")
+        )
+    cursor.execute(insert_query1, values)
+    connection.commit()
+
 
 
 cursor.close()
