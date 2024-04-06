@@ -1,6 +1,8 @@
 import mysql.connector
 import json
 from datetime import datetime
+import pandas as pd 
+import pymysql 
 
 with open('sample.json', 'r') as json_file:
     data = json.load(json_file)
@@ -107,14 +109,21 @@ for i in data["publications"]:
         )
     cursor.execute(insert_query1, values)
     connection.commit()
+    
+    
+sql_query = "select * from author"
+
+df = pd.read_sql(sql_query, connection)
+    
+
 
 
 
 cursor.close()
 
-
-
 connection.close()
+
+df.to_excel('author_data.xlsx', index=False)
 
 
 
