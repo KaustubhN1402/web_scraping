@@ -1,1 +1,55 @@
-{"container_type": "Author", "filled": ["basics", "indices", "counts", "coauthors", "publications", "public_access"], "source": "SEARCH_AUTHOR_SNIPPETS", "scholar_id": "otS49_sAAAAJ", "url_picture": "https://scholar.google.com/citations?view_op=medium_photo&user=otS49_sAAAAJ", "name": "Parag Jambhulkar", "affiliation": "Assistant Professor", "email_domain": "@pict.edu", "interests": ["Parallel Computing", "High Performance Computing"], "citedby": 1, "homepage": "https://www.comrevo.com/", "citedby5y": 0, "hindex": 1, "hindex5y": 0, "i10index": 0, "i10index5y": 0, "cites_per_year": {}, "coauthors": [], "publications": [{"container_type": "Publication", "source": "AUTHOR_PUBLICATION_ENTRY", "bib": {"title": "A multicast authentication protocol (MAP) for dynamic multicast groups in wireless networks", "pub_year": "2013", "citation": "Security in Computing and Communications: International Symposium, SSCC 2013 \u2026, 2013"}, "filled": false, "author_pub_id": "otS49_sAAAAJ:u5HHmVD_uO8C", "num_citations": 1, "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11979944000675781331", "cites_id": ["11979944000675781331"]}, {"container_type": "Publication", "source": "AUTHOR_PUBLICATION_ENTRY", "bib": {"title": "Review on Different Algorithms for Disease Prediction", "pub_year": "2023", "citation": ""}, "filled": false, "author_pub_id": "otS49_sAAAAJ:u-x6o8ySG0sC", "num_citations": 0}], "public_access": {"available": 0, "not_available": 0}}
+{
+    "container_type": "Author",
+    "filled": [
+        "basics",
+        "indices",
+        "counts",
+        "coauthors",
+        "publications",
+        "public_access"
+    ],
+    "source": "SEARCH_AUTHOR_SNIPPETS",
+    "scholar_id": "sWh_JsAAAAAJ",
+    "url_picture": "https://scholar.google.com/citations?view_op=medium_photo&user=sWh_JsAAAAAJ",
+    "name": "Mayur Chauhan",
+    "affiliation": "Patanjali Research Foundation",
+    "email_domain": "@prft.co.in",
+    "interests": [
+        "Clinical studies",
+        "Pharmacognosy",
+        "Ayurveda"
+    ],
+    "citedby": 14,
+    "citedby5y": 14,
+    "hindex": 1,
+    "hindex5y": 1,
+    "i10index": 1,
+    "i10index5y": 1,
+    "cites_per_year": {
+        "2023": 13,
+        "2024": 1
+    },
+    "coauthors": [],
+    "publications": [
+        {
+            "container_type": "Publication",
+            "source": "AUTHOR_PUBLICATION_ENTRY",
+            "bib": {
+                "title": "A Comprehensive Insight into the Phytochemical, Pharmacological Potential, and Traditional Medicinal Uses of Albizia lebbeck (L.) Benth.",
+                "pub_year": "2022",
+                "citation": "Evidence-Based Complementary and Alternative Medicine 2022, 2022"
+            },
+            "filled": false,
+            "author_pub_id": "sWh_JsAAAAAJ:u5HHmVD_uO8C",
+            "num_citations": 14,
+            "citedby_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6753739293568844029",
+            "cites_id": [
+                "6753739293568844029"
+            ]
+        }
+    ],
+    "public_access": {
+        "available": 0,
+        "not_available": 0
+    }
+}

@@ -113,7 +113,7 @@ for i in data["publications"]:
     
 sql_query = "select * from author"
 
-df = pd.read_sql(sql_query, connection)
+# df = pd.read_sql(sql_query, connection)
     
 
 
@@ -123,7 +123,7 @@ cursor.close()
 
 connection.close()
 
-df.to_excel('author_data.xlsx', index=False)
+# df.to_excel('author_data.xlsx', index=False)
 
 
 

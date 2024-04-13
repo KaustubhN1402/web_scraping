@@ -3,15 +3,29 @@ from author import Author
 from database import insert_author
 import json
 import os
-author_name = input("enter name of the author to be searched ")
-r = scholarly.search_author( author_name)
-r = next( r )
-author = scholarly.fill( r )
 
-with open( "sample.json" , "w" ) as file:
-    json.dump( author , file )
+def process_text(text_value):
+    # Do something with the text value
+    print("Received text value:", text_value)
+    # For example, assign it to a variable
     
-os.system( "python data_extract.py" )
+    author_name=text_value
+    
+    
+    
+    print (author_name)
+    r = scholarly.search_author(author_name)    
+    r = next( r )
+    author = scholarly.fill( r )
+
+    with open( "sample.json" , "w" ) as file:
+        json.dump( author , file )
+    
+    script_path="D://Programming//webScraping//engine//data_extract.py"
+    os.system( f"python {script_path}" )
+    
+
+    print("Work Done 😏")
    
 '''
 #scholarly.pprint( author )
@@ -95,3 +109,6 @@ out_file = open("test1.json", "w")
 json.dump(dict1, out_file, indent = 4, sort_keys = False)
 out_file.close()
 '''
+
+
+
