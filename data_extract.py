@@ -11,7 +11,7 @@ mysql_config = {
     'user': 'root',
     'password': 'root',
     'database': 'article',
-}
+} 
 
 connection = mysql.connector.connect(**mysql_config)
 cursor = connection.cursor()
